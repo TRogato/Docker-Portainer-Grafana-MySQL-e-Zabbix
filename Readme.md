@@ -11,11 +11,7 @@ Um conjunto de scripts para automatizar a instalação e configuração de um se
 - [Instalação](#instalação)
 - [Uso](#uso)
 - [Configuração](#configuração)
-- [Scripts Disponíveis](#scripts-disponíveis)
-- [Versionamento](#versionamento)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
-- [Contato](#contato)
+  
 
 ## Descrição
 
