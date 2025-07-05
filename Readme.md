@@ -56,7 +56,7 @@ Antes de começar, certifique-se de ter:
 
 1. Clone este repositório:
    ```bash
-   git clone (https://github.com/EsleyLeal/monitoring-server-setup.git)
+   git clone https://github.com/EsleyLeal/monitoring-server-setup.git
    cd monitoring-server-setup
    chmod +x monitoring-server-setup.sh
    ./monitoring-server-setup.sh
