@@ -9,8 +9,6 @@ Um conjunto de scripts para automatizar a instalação e configuração de um se
 - [Pré-requisitos](#pré-requisitos)
 - [Sistemas Suportados](#sistemas-suportados)
 - [Instalação](#instalação)
-- [Uso](#uso)
-- [Configuração](#configuração)
   
 
 ## Descrição
