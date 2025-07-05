@@ -60,3 +60,12 @@ Antes de começar, certifique-se de ter:
    cd monitoring-server-setup
    chmod +x monitoring-server-setup.sh
    ./monitoring-server-setup.sh
+   
+### Agradecimentos
+
+Este projeto é licenciado sob a Licença MIT.  
+Aqui fica o meu agradecimento se você chegou até aqui.
+
+--- 
+
+**Obrigado por visitar meu repositório!**
