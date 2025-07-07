@@ -51,7 +51,7 @@ Antes de começar, certifique-se de ter:
 1. Clone este repositório:
    ```bash
    git clone https://github.com/TRogato/Docker-Portainer-Grafana-MySQL-e-Zabbix.git
-   cd monitoring-server-setup
+   cd Docker-Portainer-Grafana-MySQL-e-Zabbix
    chmod +x monitoring-server-setup.sh
    ./monitoring-server-setup.sh
    
