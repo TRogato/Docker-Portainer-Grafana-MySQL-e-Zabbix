@@ -61,12 +61,15 @@ Este projeto é licenciado sob a Licença MIT.
 Aqui fica o meu agradecimento se você chegou até aqui.
 
 ______________________________________________________________________________________________________________________
+2. Clone este repositório:
+   
 Crie um arquivo .env no mesmo diretório com as senhas:
-
+```bash
 MYSQL_ZABBIX_PASSWORD=sua_senha_zabbix
+
 MYSQL_ROOT_PASSWORD=sua_senha_root
 
-Importante: Substitua sua_senha_zabbix e sua_senha_root por senhas fortes e seguras.
+## Importante: Substitua sua_senha_zabbix e sua_senha_root por senhas fortes e seguras.
 
 --- 
 
