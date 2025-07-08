@@ -1,0 +1,95 @@
+version: '3.8'
+#MYSQL_ZABBIX_PASSWORD=sua_senha_zabbix
+#MYSQL_ROOT_PASSWORD=sua_senha_root
+#Importante: Substitua sua_senha_zabbix e sua_senha_root por senhas fortes e seguras.
+services:
+  mysql-server:
+    image: mysql:8.0.30
+    container_name: mysql-server
+    restart: always
+    environment:
+      MYSQL_DATABASE: zabbix
+      MYSQL_USER: zabbix
+      MYSQL_PASSWORD: ${MYSQL_ZABBIX_PASSWORD} # Usar variável de ambiente
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD} # Usar variável de ambiente
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 3s
+      timeout: 5s
+      retries: 5
+    command: --character-set-server=utf8 --collation-server=utf8_bin --default-authentication-plugin=mysql_native_password
+    volumes:
+      - mysql_data:/var/lib/mysql # Volume persistente para dados do MySQL
+
+  zabbix-java-gateway:
+    image: zabbix/zabbix-java-gateway
+    container_name: zabbix-java-gateway
+    restart: unless-stopped
+
+  zabbix-server:
+    image: zabbix/zabbix-server-mysql
+    container_name: zabbix-server
+    restart: unless-stopped
+    ports:
+      - "10051:10051"
+    environment:
+      DB_SERVER_HOST: mysql-server # Nome do serviço no Docker Compose
+      MYSQL_DATABASE: zabbix
+      MYSQL_USER: zabbix
+      MYSQL_PASSWORD: ${MYSQL_ZABBIX_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    depends_on:
+      mysql-server:
+        condition: service_healthy # Espera o MySQL estar saudável
+      zabbix-java-gateway:
+        condition: service_started
+
+  zabbix-agent:
+    image: zabbix/zabbix-agent
+    container_name: zabbix-agent
+    restart: unless-stopped
+    ports:
+      - "10050:10050"
+    environment:
+      ZBX_HOSTNAME: "Zabbix server"
+      ZBX_SERVER_HOST: zabbix-server # Nome do serviço no Docker Compose
+    depends_on:
+      - zabbix-server
+
+  zabbix-web-nginx-mysql:
+    image: zabbix/zabbix-web-nginx-mysql
+    container_name: zabbix-web-nginx-mysql
+    restart: unless-stopped
+    ports:
+      - "8080:8080" # Zabbix Web na porta 8080
+    environment:
+      DB_SERVER_HOST: mysql-server
+      MYSQL_DATABASE: zabbix
+      MYSQL_USER: zabbix
+      MYSQL_PASSWORD: ${MYSQL_ZABBIX_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    depends_on:
+      mysql-server:
+        condition: service_healthy
+
+  portainer:
+    image: portainer/portainer-ce:2.9.3
+    container_name: portainer
+    restart: always
+    ports:
+      - "8000:8000"
+      - "9443:9443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+  grafana:
+    image: grafana/grafana-enterprise
+    container_name: grafana
+    restart: always
+    ports:
+      - "3000:3000"
+
+volumes:
+  mysql_data:
+  portainer_data:
