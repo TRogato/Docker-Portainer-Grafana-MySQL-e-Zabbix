@@ -10,8 +10,8 @@ services:
     environment:
       MYSQL_DATABASE: zabbix
       MYSQL_USER: zabbix
-      MYSQL_PASSWORD: ${MYSQL_ZABBIX_PASSWORD} # Usar variável de ambiente
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD} # Usar variável de ambiente
+      MYSQL_PASSWORD: zabbix # Usar variável de ambiente
+      MYSQL_ROOT_PASSWORD: zabbix # Usar variável de ambiente
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 3s
@@ -36,8 +36,8 @@ services:
       DB_SERVER_HOST: mysql-server # Nome do serviço no Docker Compose
       MYSQL_DATABASE: zabbix
       MYSQL_USER: zabbix
-      MYSQL_PASSWORD: ${MYSQL_ZABBIX_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_PASSWORD: ${zabbix}
+      MYSQL_ROOT_PASSWORD: zabbix
     depends_on:
       mysql-server:
         condition: service_healthy # Espera o MySQL estar saudável
@@ -66,8 +66,8 @@ services:
       DB_SERVER_HOST: mysql-server
       MYSQL_DATABASE: zabbix
       MYSQL_USER: zabbix
-      MYSQL_PASSWORD: ${MYSQL_ZABBIX_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_PASSWORD: zabbix
+      MYSQL_ROOT_PASSWORD: zabbix
     depends_on:
       mysql-server:
         condition: service_healthy
