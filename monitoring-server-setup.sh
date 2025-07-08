@@ -125,7 +125,7 @@ finish
 
 # 11) Zabbix Web
 echo -n "🌐  Iniciando Zabbix Web (NGINX+MySQL)... "
-run_cmd docker run -d --name zabbix-web-nginx-mysql --restart=unless-stopped -p 80:8080 --link mysql-server:mysql -e DB_SERVER_HOST="mysql-server" -e MYSQL_DATABASE="zabbix" -e MYSQL_USER="zabbix" -e MYSQL_PASSWORD="zabbix" -e MYSQL_ROOT_PASSWORD="zabbix" zabbix/zabbix-web-nginx-mysql
+run_cmd docker run -d --name zabbix-web-nginx-mysql --restart=unless-stopped -p 8080:8080 --link mysql-server:mysql -e DB_SERVER_HOST="mysql-server" -e MYSQL_DATABASE="zabbix" -e MYSQL_USER="zabbix" -e MYSQL_PASSWORD="zabbix" -e MYSQL_ROOT_PASSWORD="zabbix" zabbix/zabbix-web-nginx-mysql
 finish
 
 # Finalização
