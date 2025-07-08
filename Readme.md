@@ -52,7 +52,7 @@ Antes de começar, certifique-se de ter:
    ```bash
    git clone https://github.com/TRogato/Docker-Portainer-Grafana-MySQL-e-Zabbix.git
    cd Docker-Portainer-Grafana-MySQL-e-Zabbix
-   chmod +x monitoring-server-setup.sh
+   chmod +x monitoring-NOVO.sh
    ./monitoring-server-setup.sh
    
 ### Agradecimentos
