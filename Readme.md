@@ -53,7 +53,7 @@ Antes de começar, certifique-se de ter:
    git clone https://github.com/TRogato/Docker-Portainer-Grafana-MySQL-e-Zabbix.git
    cd Docker-Portainer-Grafana-MySQL-e-Zabbix
    chmod +x monitoring-NOVO.sh
-   ./monitoring-server-setup.sh
+   ./monitoring-NOVO.sh
    
 ### Agradecimentos
 
